@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module'
 import { getMongoDBConfig } from './config/mongo.config'
 import { FileModule } from './file/file.module'
 import { UserModule } from './user/user.module'
+import { NoteModule } from './note/note.module'
 
 @Module({
 	imports: [
@@ -19,6 +20,7 @@ import { UserModule } from './user/user.module'
 		AuthModule,
 		UserModule,
 		FileModule,
+		NoteModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
