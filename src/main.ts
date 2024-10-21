@@ -7,7 +7,7 @@ async function bootstrap() {
 	app.setGlobalPrefix('api')
 
 	app.enableCors({
-		origin: 'https://scratchpad-frontend-umber.vercel.app/',
+		origin: true,
 		credentials: true,
 		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 		allowedHeaders: 'Content-Type, Accept, Authorization',
