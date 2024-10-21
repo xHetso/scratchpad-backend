@@ -23,14 +23,20 @@ export class NoteController {
 
 	@Get()
 	@Auth()
-	async getAll(@Query('searchTerm') searchTerm?: string) {
-		return this.noteService.getAll(searchTerm)
+	async getAll(
+		@User('_id') userId: string,
+		@Query('searchTerm') searchTerm?: string,
+	) {
+		return this.noteService.getAll(userId, searchTerm)
 	}
 
 	@Get(':id')
 	@Auth()
-	async get(@Param('id', IdValidationPipe) id: string) {
-		return this.noteService.byId(id)
+	async get(
+		@User('_id') userId: string,
+		@Param('id', IdValidationPipe) id: string,
+	) {
+		return this.noteService.byId(id, userId)
 	}
 
 	@UsePipes(new ValidationPipe())
@@ -46,16 +52,20 @@ export class NoteController {
 	@HttpCode(200)
 	@Auth()
 	async update(
+		@User('_id') userId: string,
 		@Param('id', IdValidationPipe) id: string,
 		@Body() dto: CreateNoteDto,
 	) {
-		return this.noteService.update(id, dto)
+		return this.noteService.update(id, dto, userId)
 	}
 
 	@Delete(':id')
 	@HttpCode(200)
 	@Auth()
-	async delete(@Param('id', IdValidationPipe) id: string) {
-		return this.noteService.delete(id)
+	async delete(
+		@User('_id') userId: string,
+		@Param('id', IdValidationPipe) id: string,
+	) {
+		return this.noteService.delete(id, userId)
 	}
 }

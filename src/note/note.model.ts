@@ -11,5 +11,5 @@ export class NoteModel extends TimeStamps {
 	content: string
 
 	@prop()
-	userId: string // Чтобы связать заметку с пользователем
+	userId: string
 }
